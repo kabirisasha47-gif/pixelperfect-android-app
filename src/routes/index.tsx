@@ -42,6 +42,7 @@ function LoginScreen() {
   const [seconds, setSeconds] = useState(RESEND_SECONDS);
   const [consentOpen, setConsentOpen] = useState(false);
   const inputs = useRef<(HTMLInputElement | null)[]>([]);
+  const resentOnce = useRef(false);
 
   useEffect(() => {
     if (step !== "otp" || seconds <= 0) return;
@@ -59,6 +60,7 @@ function LoginScreen() {
       return;
     }
     update({ phone });
+    if (step === "otp") resentOnce.current = true;
     window.__lovableEvents?.track?.("project.login_code_requested", { resend: step === "otp" });
     setStep("otp");
     setSeconds(RESEND_SECONDS);
@@ -86,7 +88,7 @@ function LoginScreen() {
   function submit() {
     if (!canSubmit) return;
     update({ loggedIn: true });
-    window.__lovableEvents?.track?.("project.otp_completed", { resent: seconds < RESEND_SECONDS && resentOnce.current });
+    window.__lovableEvents?.track?.("project.otp_completed", { resent: resentOnce.current });
     toast.success("خوش آمدید! ورود با موفقیت انجام شد");
     navigate({ to: "/dashboard" });
   }
