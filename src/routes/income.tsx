@@ -94,20 +94,20 @@ function IncomeScreen() {
         <div className="relative mt-2 flex h-52 gap-2">
           <div className="relative w-7 shrink-0 text-[10px] text-muted-foreground">
             {[0, 350, 700].map((t) => (
-              <span key={t} className="absolute right-0 -translate-y-1/2" style={{ top: `${(1 - t / 900) * 100}%` }}>
+              <span key={t} className="absolute right-0 -translate-y-1/2" style={{ top: `${(1 - t / 750) * 100}%` }}>
                 {fa(t)}
               </span>
             ))}
           </div>
           <div className="relative flex-1">
             {[0, 350, 700].map((t) => (
-              <div key={t} className="absolute inset-x-0 border-t border-dashed border-track-strong" style={{ top: `${(1 - t / 900) * 100}%` }} />
+              <div key={t} className="absolute inset-x-0 border-t border-dashed border-track-strong" style={{ top: `${(1 - t / 750) * 100}%` }} />
             ))}
             <div className="absolute inset-0 flex items-end justify-around gap-5 px-2">
               {bars.map((b) => (
                 <div key={b.label} className="flex h-full w-full max-w-20 flex-col items-center justify-end">
                   <span className="num mb-2 text-sm font-black">{fa(b.value)}</span>
-                  <span className={cn("block w-full rounded-2xl transition-all duration-700", b.cls)} style={{ height: `${(b.value / 900) * 100}%` }} />
+                  <span className={cn("block w-full rounded-2xl transition-all duration-700", b.cls)} style={{ height: `${(b.value / 750) * 100}%` }} />
                 </div>
               ))}
             </div>

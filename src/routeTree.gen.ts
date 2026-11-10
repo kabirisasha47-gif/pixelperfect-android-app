@@ -11,9 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BillRouteImport } from './routes/bill'
+import { Route as CaseRouteImport } from './routes/case'
+import { Route as ChannelRouteImport } from './routes/channel'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DesignRouteImport } from './routes/design'
+import { Route as IncomeRouteImport } from './routes/income'
+import { Route as InstallmentRouteImport } from './routes/installment'
 import { Route as OptimizeRouteImport } from './routes/optimize'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as QuotesRouteImport } from './routes/quotes'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,6 +29,16 @@ const IndexRoute = IndexRouteImport.update({
 const BillRoute = BillRouteImport.update({
   id: '/bill',
   path: '/bill',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaseRoute = CaseRouteImport.update({
+  id: '/case',
+  path: '/case',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChannelRoute = ChannelRouteImport.update({
+  id: '/channel',
+  path: '/channel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -35,48 +51,126 @@ const DesignRoute = DesignRouteImport.update({
   path: '/design',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IncomeRoute = IncomeRouteImport.update({
+  id: '/income',
+  path: '/income',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InstallmentRoute = InstallmentRouteImport.update({
+  id: '/installment',
+  path: '/installment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OptimizeRoute = OptimizeRouteImport.update({
   id: '/optimize',
   path: '/optimize',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuotesRoute = QuotesRouteImport.update({
+  id: '/quotes',
+  path: '/quotes',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bill': typeof BillRoute
+  '/case': typeof CaseRoute
+  '/channel': typeof ChannelRoute
   '/dashboard': typeof DashboardRoute
   '/design': typeof DesignRoute
+  '/income': typeof IncomeRoute
+  '/installment': typeof InstallmentRoute
   '/optimize': typeof OptimizeRoute
+  '/profile': typeof ProfileRoute
+  '/quotes': typeof QuotesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bill': typeof BillRoute
+  '/case': typeof CaseRoute
+  '/channel': typeof ChannelRoute
   '/dashboard': typeof DashboardRoute
   '/design': typeof DesignRoute
+  '/income': typeof IncomeRoute
+  '/installment': typeof InstallmentRoute
   '/optimize': typeof OptimizeRoute
+  '/profile': typeof ProfileRoute
+  '/quotes': typeof QuotesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/bill': typeof BillRoute
+  '/case': typeof CaseRoute
+  '/channel': typeof ChannelRoute
   '/dashboard': typeof DashboardRoute
   '/design': typeof DesignRoute
+  '/income': typeof IncomeRoute
+  '/installment': typeof InstallmentRoute
   '/optimize': typeof OptimizeRoute
+  '/profile': typeof ProfileRoute
+  '/quotes': typeof QuotesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/bill' | '/dashboard' | '/design' | '/optimize'
+  fullPaths:
+    | '/'
+    | '/bill'
+    | '/case'
+    | '/channel'
+    | '/dashboard'
+    | '/design'
+    | '/income'
+    | '/installment'
+    | '/optimize'
+    | '/profile'
+    | '/quotes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/bill' | '/dashboard' | '/design' | '/optimize'
-  id: '__root__' | '/' | '/bill' | '/dashboard' | '/design' | '/optimize'
+  to:
+    | '/'
+    | '/bill'
+    | '/case'
+    | '/channel'
+    | '/dashboard'
+    | '/design'
+    | '/income'
+    | '/installment'
+    | '/optimize'
+    | '/profile'
+    | '/quotes'
+  id:
+    | '__root__'
+    | '/'
+    | '/bill'
+    | '/case'
+    | '/channel'
+    | '/dashboard'
+    | '/design'
+    | '/income'
+    | '/installment'
+    | '/optimize'
+    | '/profile'
+    | '/quotes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BillRoute: typeof BillRoute
+  CaseRoute: typeof CaseRoute
+  ChannelRoute: typeof ChannelRoute
   DashboardRoute: typeof DashboardRoute
   DesignRoute: typeof DesignRoute
+  IncomeRoute: typeof IncomeRoute
+  InstallmentRoute: typeof InstallmentRoute
   OptimizeRoute: typeof OptimizeRoute
+  ProfileRoute: typeof ProfileRoute
+  QuotesRoute: typeof QuotesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -95,6 +189,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BillRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/case': {
+      id: '/case'
+      path: '/case'
+      fullPath: '/case'
+      preLoaderRoute: typeof CaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/channel': {
+      id: '/channel'
+      path: '/channel'
+      fullPath: '/channel'
+      preLoaderRoute: typeof ChannelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
@@ -109,11 +217,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DesignRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/income': {
+      id: '/income'
+      path: '/income'
+      fullPath: '/income'
+      preLoaderRoute: typeof IncomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/installment': {
+      id: '/installment'
+      path: '/installment'
+      fullPath: '/installment'
+      preLoaderRoute: typeof InstallmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/optimize': {
       id: '/optimize'
       path: '/optimize'
       fullPath: '/optimize'
       preLoaderRoute: typeof OptimizeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quotes': {
+      id: '/quotes'
+      path: '/quotes'
+      fullPath: '/quotes'
+      preLoaderRoute: typeof QuotesRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -122,9 +258,15 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BillRoute: BillRoute,
+  CaseRoute: CaseRoute,
+  ChannelRoute: ChannelRoute,
   DashboardRoute: DashboardRoute,
   DesignRoute: DesignRoute,
+  IncomeRoute: IncomeRoute,
+  InstallmentRoute: InstallmentRoute,
   OptimizeRoute: OptimizeRoute,
+  ProfileRoute: ProfileRoute,
+  QuotesRoute: QuotesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
