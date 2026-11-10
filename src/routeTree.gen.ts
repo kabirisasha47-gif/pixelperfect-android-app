@@ -10,33 +10,73 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BillRouteImport } from './routes/bill'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DesignRouteImport } from './routes/design'
+import { Route as OptimizeRouteImport } from './routes/optimize'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BillRoute = BillRouteImport.update({
+  id: '/bill',
+  path: '/bill',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignRoute = DesignRouteImport.update({
+  id: '/design',
+  path: '/design',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OptimizeRoute = OptimizeRouteImport.update({
+  id: '/optimize',
+  path: '/optimize',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bill': typeof BillRoute
+  '/dashboard': typeof DashboardRoute
+  '/design': typeof DesignRoute
+  '/optimize': typeof OptimizeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bill': typeof BillRoute
+  '/dashboard': typeof DashboardRoute
+  '/design': typeof DesignRoute
+  '/optimize': typeof OptimizeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bill': typeof BillRoute
+  '/dashboard': typeof DashboardRoute
+  '/design': typeof DesignRoute
+  '/optimize': typeof OptimizeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/bill' | '/dashboard' | '/design' | '/optimize'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/bill' | '/dashboard' | '/design' | '/optimize'
+  id: '__root__' | '/' | '/bill' | '/dashboard' | '/design' | '/optimize'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BillRoute: typeof BillRoute
+  DashboardRoute: typeof DashboardRoute
+  DesignRoute: typeof DesignRoute
+  OptimizeRoute: typeof OptimizeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +88,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bill': {
+      id: '/bill'
+      path: '/bill'
+      fullPath: '/bill'
+      preLoaderRoute: typeof BillRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design': {
+      id: '/design'
+      path: '/design'
+      fullPath: '/design'
+      preLoaderRoute: typeof DesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/optimize': {
+      id: '/optimize'
+      path: '/optimize'
+      fullPath: '/optimize'
+      preLoaderRoute: typeof OptimizeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BillRoute: BillRoute,
+  DashboardRoute: DashboardRoute,
+  DesignRoute: DesignRoute,
+  OptimizeRoute: OptimizeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
