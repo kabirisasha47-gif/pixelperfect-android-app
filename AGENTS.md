@@ -28,3 +28,11 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- The app is a mobile-first, RTL Persian (fa) web app framed at max-width 430px in `__root.tsx`; Android delivery is via the web manifest (installable) — keep every screen phone-sized.
+- Business numbers and rules (rates, coverage, meter tolerance, channel conflicts) live only in `src/lib/eco-calc.ts` and are covered by `src/lib/eco-calc.test.ts`; screens must import them, never hard-code them.
+- Number display always goes through `src/lib/fa.ts` (manual Persian formatting) so SSR and client output match.
+- Cross-screen user state lives in `src/lib/eco-store.tsx` (React context persisted to localStorage); there is no backend yet.
+- Shared screen building blocks (header, yellow panel, rows, pills, bottom nav, sheets, charts) are in `src/components/eco/`; reuse them for new screens.
