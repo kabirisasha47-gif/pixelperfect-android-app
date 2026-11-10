@@ -131,7 +131,7 @@ export function BarChart({
   max: number;
   ticks: number[];
   unit?: string;
-  selected?: number;
+  selected?: number | undefined;
   onSelect?: (i: number) => void;
   tooltip?: (d: BarDatum, i: number) => ReactNode;
   footLabel?: string;
