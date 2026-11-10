@@ -59,6 +59,7 @@ function LoginScreen() {
       return;
     }
     update({ phone });
+    window.__lovableEvents?.track?.("project.login_code_requested", { resend: step === "otp" });
     setStep("otp");
     setSeconds(RESEND_SECONDS);
     setDigits(Array(6).fill(""));
@@ -85,6 +86,7 @@ function LoginScreen() {
   function submit() {
     if (!canSubmit) return;
     update({ loggedIn: true });
+    window.__lovableEvents?.track?.("project.otp_completed", { resent: seconds < RESEND_SECONDS && resentOnce.current });
     toast.success("خوش آمدید! ورود با موفقیت انجام شد");
     navigate({ to: "/dashboard" });
   }
