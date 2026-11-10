@@ -108,7 +108,7 @@ export function WhiteButton({ className, ...props }: ButtonHTMLAttributes<HTMLBu
 interface ScreenHeaderProps {
   title: string;
   subtitle?: string;
-  backTo?: LinkProps["to"];
+  backTo?: NonNullable<LinkProps["to"]>;
   start?: "back" | "user";
   end?: "bell" | ReactNode;
 }
@@ -303,7 +303,7 @@ export function ActionCard({
   title: ReactNode;
   subtitle?: ReactNode;
   onClick?: () => void;
-  to?: LinkProps["to"];
+  to?: NonNullable<LinkProps["to"]>;
 }) {
   const inner = (
     <>

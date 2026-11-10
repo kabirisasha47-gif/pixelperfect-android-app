@@ -21,7 +21,7 @@ export const Route = createFileRoute("/profile")({
   component: ProfileScreen,
 });
 
-const JOURNEY: { n: string; title: string; to: LinkProps["to"] }[] = [
+const JOURNEY: { n: string; title: string; to: NonNullable<LinkProps["to"]> }[] = [
   { n: "۰۱", title: "ورود و OTP", to: "/" },
   { n: "۰۲", title: "داشبورد نیروگاه", to: "/dashboard" },
   { n: "۰۳", title: "تأیید قبض", to: "/bill" },

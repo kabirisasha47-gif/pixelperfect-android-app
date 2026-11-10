@@ -3,7 +3,7 @@ import { ChartNoAxesColumnIncreasing, FileText, House, Sun, User } from "lucide-
 
 import { cn } from "@/lib/utils";
 
-type Item = { to: LinkProps["to"]; label: string; icon: typeof House; filled?: boolean };
+type Item = { to: NonNullable<LinkProps["to"]>; label: string; icon: typeof House; filled?: boolean };
 
 const ITEMS: Item[] = [
   { to: "/dashboard", label: "خانه", icon: House, filled: true },
