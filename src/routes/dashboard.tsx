@@ -46,7 +46,7 @@ const WEEK = [
 ];
 const MONTH = Array.from({ length: 10 }, (_, i) => ({
   label: faDigits(i * 3 + 1),
-  value: [58, 61, 63, 55, 60, 62, 64, 59, 57, 61][i],
+  value: [58, 61, 63, 55, 60, 62, 64, 59, 57, 61][i] ?? 60,
 }));
 
 const RANGE_DATA: Record<Range, { label: string; value: number }> = {

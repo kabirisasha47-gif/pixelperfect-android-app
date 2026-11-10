@@ -2,7 +2,7 @@ const DIGITS = "۰۱۲۳۴۵۶۷۸۹";
 
 /** Convert Latin digits inside any string to Persian digits. */
 export function faDigits(input: string | number): string {
-  return String(input).replace(/\d/g, (d) => DIGITS[Number(d)]);
+  return String(input).replace(/\d/g, (d) => DIGITS.charAt(Number(d)));
 }
 
 /**
@@ -12,7 +12,7 @@ export function faDigits(input: string | number): string {
 export function fa(value: number, fractionDigits = 0, groupThousands = true): string {
   const negative = value < 0;
   const fixed = Math.abs(value).toFixed(fractionDigits);
-  const [intPart, decPart] = fixed.split(".");
+  const [intPart = "0", decPart] = fixed.split(".");
   const grouped = groupThousands ? intPart.replace(/\B(?=(\d{3})+(?!\d))/g, "٬") : intPart;
   const out = decPart && Number(decPart) !== 0 ? `${grouped}٫${decPart.replace(/0+$/, "")}` : grouped;
   return (negative ? "-" : "") + faDigits(out);
@@ -20,7 +20,7 @@ export function fa(value: number, fractionDigits = 0, groupThousands = true): st
 
 /** Like fa() but always keeps the requested number of decimals. */
 export function faFixed(value: number, fractionDigits: number): string {
-  const [intPart, decPart] = Math.abs(value).toFixed(fractionDigits).split(".");
+  const [intPart = "0", decPart] = Math.abs(value).toFixed(fractionDigits).split(".");
   const grouped = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, "٬");
   return (value < 0 ? "-" : "") + faDigits(decPart ? `${grouped}٫${decPart}` : grouped);
 }

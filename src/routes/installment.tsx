@@ -257,7 +257,7 @@ function LoanSlider({
         min={min}
         max={max}
         step={step}
-        onValueChange={([v]) => onChange(v)}
+        onValueChange={([v]) => onChange(v ?? value)}
         aria-label={label}
       />
     </div>

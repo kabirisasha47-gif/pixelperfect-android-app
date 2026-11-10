@@ -226,8 +226,8 @@ export function outsideTempAt(h: number, shift = 0) {
     [24, 28.5],
   ];
   for (let i = 0; i < keys.length - 1; i++) {
-    const [h0, t0] = keys[i];
-    const [h1, t1] = keys[i + 1];
+    const [h0, t0] = keys[i]!;
+    const [h1, t1] = keys[i + 1]!;
     if (h >= h0 && h <= h1) {
       const p = (h - h0) / (h1 - h0);
       const s = (1 - Math.cos(Math.PI * p)) / 2;
