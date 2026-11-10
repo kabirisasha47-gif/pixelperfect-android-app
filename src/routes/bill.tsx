@@ -342,7 +342,7 @@ function BillScreen() {
                       {i.source === "ai" ? <Sparkles className="size-3.5 text-sun-deep" /> : <span className="block size-2 translate-y-1 rounded-full bg-warn" />}
                     </span>
                     <span>
-                      <b>{fieldLabel(i.field)}:</b> {i.message}
+                      <b>{fieldLabel(i.field)}:</b> {faDigits(i.message)}
                     </span>
                   </li>
                 ))}
