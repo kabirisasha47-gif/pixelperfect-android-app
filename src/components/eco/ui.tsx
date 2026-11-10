@@ -160,7 +160,7 @@ export function HeroStat({ label, value, unit, aside }: HeroStatProps) {
       <div className="mt-1 flex items-end justify-between gap-3">
         <div className="flex min-w-0 items-baseline gap-2">
           <span className="num text-[3.5rem] font-black leading-[1.05] text-foreground">{value}</span>
-          {unit ? <span className="text-base text-muted-foreground">{unit}</span> : null}
+          {unit ? <span className="whitespace-nowrap text-sm text-muted-foreground">{unit}</span> : null}
         </div>
         {aside}
       </div>
@@ -287,7 +287,7 @@ export function InfoRow({
         {label}
         {badge}
       </span>
-      <span className="num text-sm font-extrabold text-foreground">{value}</span>
+      <span dir="auto" className="num text-sm font-extrabold text-foreground">{value}</span>
     </div>
   );
 }

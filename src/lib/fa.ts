@@ -6,7 +6,7 @@ export function faDigits(input: string | number): string {
 }
 
 /**
- * Format a number in Persian with thousands separator "٬" and decimal "٫".
+ * Format a number in Persian with thousands separator "٬" and decimal "," (matches the design).
  * Implemented manually so SSR and browser output are byte-identical.
  */
 export function fa(value: number, fractionDigits = 0, groupThousands = true): string {
@@ -14,7 +14,7 @@ export function fa(value: number, fractionDigits = 0, groupThousands = true): st
   const fixed = Math.abs(value).toFixed(fractionDigits);
   const [intPart = "0", decPart] = fixed.split(".");
   const grouped = groupThousands ? intPart.replace(/\B(?=(\d{3})+(?!\d))/g, "٬") : intPart;
-  const out = decPart && Number(decPart) !== 0 ? `${grouped}٫${decPart.replace(/0+$/, "")}` : grouped;
+  const out = decPart && Number(decPart) !== 0 ? `${grouped},${decPart.replace(/0+$/, "")}` : grouped;
   return (negative ? "-" : "") + faDigits(out);
 }
 
@@ -22,7 +22,7 @@ export function fa(value: number, fractionDigits = 0, groupThousands = true): st
 export function faFixed(value: number, fractionDigits: number): string {
   const [intPart = "0", decPart] = Math.abs(value).toFixed(fractionDigits).split(".");
   const grouped = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, "٬");
-  return (value < 0 ? "-" : "") + faDigits(decPart ? `${grouped}٫${decPart}` : grouped);
+  return (value < 0 ? "-" : "") + faDigits(decPart ? `${grouped},${decPart}` : grouped);
 }
 
 export function faTimer(totalSeconds: number, withHours = false): string {

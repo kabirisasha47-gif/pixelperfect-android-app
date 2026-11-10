@@ -101,7 +101,7 @@ function OptimizeScreen() {
           <InfoRow label="تجهیز اصلی" value="کولر گازی ۲٫۲ کیلووات" />
           <InfoRow label="نسخه جدول نرخ" value={RATE_TABLE_VERSION} last />
         </div>
-        <div className="mt-3 rounded-full bg-card px-4 py-3 text-center font-mono text-xs font-bold" dir="ltr">
+        <div className="mt-3 rounded-full bg-card px-4 py-3 text-center text-xs font-bold" dir="ltr">
           E = P × t × (1 + α·|T_amb − T_set|)
         </div>
         <div className="mt-5 flex gap-3">

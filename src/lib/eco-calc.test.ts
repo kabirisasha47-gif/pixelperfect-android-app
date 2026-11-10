@@ -51,6 +51,6 @@ describe("EcoSolar rules", () => {
 
   it("formats numbers with Persian digits and separators", () => {
     expect(fa(3032000000)).toBe("۳٬۰۳۲٬۰۰۰٬۰۰۰");
-    expect(fa(718.776, 1)).toBe("۷۱۸٫۸");
+    expect(fa(718.776, 1)).toBe("۷۱۸,۸");
   });
 });
