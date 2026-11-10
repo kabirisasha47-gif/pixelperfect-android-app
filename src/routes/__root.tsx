@@ -10,6 +10,9 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
+import { Toaster } from "@/components/ui/sonner";
+import { EcoProvider } from "@/lib/eco-store";
+
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -17,17 +20,17 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h1 className="text-7xl font-bold text-foreground">۴۰۴</h1>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">صفحه پیدا نشد</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          صفحه‌ای که دنبال آن هستید وجود ندارد یا جابه‌جا شده است.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            بازگشت به خانه
           </Link>
         </div>
       </div>
@@ -46,10 +49,10 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          این صفحه بارگذاری نشد
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          مشکلی پیش آمد. دوباره تلاش کنید یا به خانه برگردید.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -59,13 +62,13 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            تلاش دوباره
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Go home
+            بازگشت به خانه
           </a>
         </div>
       </div>
@@ -80,22 +83,32 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     // twitter:image here: every page without its own would inherit the root's preview image.
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { name: "theme-color", content: "#f4f4f4" },
+      { name: "mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { title: "اکوسولار | مدیریت هوشمند انرژی خورشیدی" },
+      { name: "description", content: "اپلیکیشن اکوسولار: پایش نیروگاه خورشیدی، انتخاب کانال درآمد و صورتحساب خرید تضمینی." },
+      { name: "author", content: "EcoSolar" },
+      { property: "og:title", content: "اکوسولار | مدیریت هوشمند انرژی خورشیدی" },
+      { property: "og:description", content: "پایش نیروگاه خورشیدی، انتخاب کانال درآمد و صورتحساب خرید تضمینی." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "apple-touch-icon", href: "/icon-192.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -106,7 +119,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fa" dir="rtl">
       <head>
         <HeadContent />
       </head>
@@ -123,8 +136,19 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <EcoProvider>
+        <div className="flex min-h-dvh justify-center bg-desk md:py-6">
+          <div className="relative flex min-h-dvh w-full max-w-[430px] flex-col overflow-x-hidden bg-background md:min-h-[calc(100dvh-3rem)] md:overflow-hidden md:rounded-[2.75rem] md:shadow-frame">
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <Outlet />
+          </div>
+        </div>
+        <Toaster
+          position="top-center"
+          dir="rtl"
+          toastOptions={{ style: { fontFamily: "Vazirmatn, sans-serif", borderRadius: "1.25rem" } }}
+        />
+      </EcoProvider>
     </QueryClientProvider>
   );
 }
