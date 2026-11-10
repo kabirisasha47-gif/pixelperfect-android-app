@@ -36,3 +36,5 @@ use the editor.
 - Number display always goes through `src/lib/fa.ts` (manual Persian formatting) so SSR and client output match.
 - Cross-screen user state lives in `src/lib/eco-store.tsx` (React context persisted to localStorage); there is no backend yet.
 - Shared screen building blocks (header, yellow panel, rows, pills, bottom nav, sheets, charts) are in `src/components/eco/`; reuse them for new screens.
+- AI bill reading: `src/lib/bill-ai.functions.ts` (server function) → `src/lib/ai-gateway.server.ts` (Lovable AI Gateway, Responses API, streamed structured output); deterministic bill rules live in `src/lib/bill-checks.ts` with tests, and the model's own findings are merged on top — never trust the model alone for consistency checks.
+- Funnel analytics events are called inline with `window.__lovableEvents?.track?.("project.*", …)` at the success branch of the existing handler, and registered in `.lovable/events.json`.

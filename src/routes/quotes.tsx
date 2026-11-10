@@ -158,6 +158,11 @@ function QuotesScreen() {
           onClick={() => {
             if (!selectedQuote) return;
             update({ quoteId: selectedQuote.id, orderPlaced: true });
+            window.__lovableEvents?.track?.("project.order_placed", {
+              supplier_id: selectedQuote.id,
+              price_rank: [...valid].sort((a, b) => a.price - b.price).findIndex((q) => q.id === selectedQuote.id) + 1,
+              order_value_rial: selectedQuote.price,
+            });
             toast.success("سفارش ثبت شد", { description: `${selectedQuote.supplier} — ${fa(selectedQuote.price)} ریال` });
             navigate({ to: "/case" });
           }}
