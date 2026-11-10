@@ -39,7 +39,7 @@ export const CHANNELS: Channel[] = [
     annualMillion: (ANNUAL_PRODUCTION_KWH * BATTERY_FIT_RATE) / 1e6,
     contractYears: 20,
     paymentDelay: "۲ تا ۳ ماه",
-    activation: `باتری حداقل ۷٫۵ kWh`,
+    activation: `باتری حداقل ۷,۵ kWh`,
     requiresBattery: true,
     isFeedInTariff: true,
   },

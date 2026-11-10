@@ -96,9 +96,9 @@ function OptimizeScreen() {
       <SunPanel>
         <PanelTitle aside={<InfoCircleButton onClick={() => setInfoOpen(true)} />}>چرا این پیشنهاد؟</PanelTitle>
         <div className="mt-2">
-          <InfoRow label="ضریب حساسیت دمایی" value="۰٫۰۷ بر هر درجه" />
+          <InfoRow label="ضریب حساسیت دمایی" value="۰,۰۷ بر هر درجه" />
           <InfoRow label="منبع دما" value="پیش‌بینی هواشناسی نجف‌آباد" />
-          <InfoRow label="تجهیز اصلی" value="کولر گازی ۲٫۲ کیلووات" />
+          <InfoRow label="تجهیز اصلی" value="کولر گازی ۲,۲ کیلووات" />
           <InfoRow label="نسخه جدول نرخ" value={RATE_TABLE_VERSION} last />
         </div>
         <div className="mt-3 rounded-full bg-card px-4 py-3 text-center text-xs font-bold" dir="ltr">

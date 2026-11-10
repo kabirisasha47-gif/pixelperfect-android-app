@@ -206,7 +206,7 @@ function LoginScreen() {
         </Footnote>
       </SunPanel>
 
-      <Sheet open={consentOpen} onOpenChange={setConsentOpen} title="رضایت‌نامه اشتراک داده" description="نسخه ۱٫۲ — آبان ۱۴۰۵">
+      <Sheet open={consentOpen} onOpenChange={setConsentOpen} title="رضایت‌نامه اشتراک داده" description="نسخه ۱,۲ — آبان ۱۴۰۵">
         <div className="space-y-3 text-sm leading-7 text-foreground/85">
           <p>با تأیید این رضایت‌نامه، به اکوسولار اجازه می‌دهید اطلاعات قبض برق، شناسه قبض و مشخصات انشعاب شما را از شرکت توزیع دریافت و برای تحلیل مصرف و طراحی نیروگاه استفاده کند.</p>
           <p>داده‌ها فقط در سرورهای داخل کشور نگهداری می‌شوند و بدون اجازه شما با هیچ شخص ثالثی به اشتراک گذاشته نمی‌شوند.</p>

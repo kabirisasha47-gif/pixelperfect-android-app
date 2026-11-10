@@ -94,7 +94,7 @@ function DesignScreen() {
             <>
               <InfoRow label="تلفات کل سیستم" value="۱۴٪" />
               <InfoRow label="ضریب عملکرد PR" value="۸۲٪" />
-              <InfoRow label="ساعات آفتابی معادل" value="۴٫۳ ساعت در روز" last />
+              <InfoRow label="ساعات آفتابی معادل" value="۴,۳ ساعت در روز" last />
             </>
           ) : null}
         </div>
